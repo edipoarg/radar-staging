@@ -1,4 +1,7 @@
-import type { TipoFilters } from "../../helpers/useFilters";
+import type {
+  HatredComponentFilters,
+  TipoFilters,
+} from "../../helpers/useFilters";
 import Filter from "./Filter/Filter";
 import styles from "./Filters.module.css";
 
@@ -6,12 +9,16 @@ interface Props {
   caseCount: number;
   tipoFilters: TipoFilters;
   setTipoFilters: (callback: (prevFilters: TipoFilters) => TipoFilters) => void;
+  filtersByHatredComponent: HatredComponentFilters;
+  setFiltersByHatredComponent: (newFilters: HatredComponentFilters) => void;
 }
 
 export default function Filters({
   caseCount,
   tipoFilters,
   setTipoFilters,
+  filtersByHatredComponent,
+  setFiltersByHatredComponent,
 }: Props) {
   const handleTipoFilterChange =
     (tipoId: "t1" | "t2" | "t3") => (checked: boolean) => {
@@ -46,6 +53,25 @@ export default function Filters({
           onChange={handleTipoFilterChange("t3")}
           value={tipoFilters.t3}
         />
+      </div>
+      <div className={styles.filtrosPorTipo}>
+        {Object.entries(filtersByHatredComponent).map(
+          ([hatredComponentName, value]) => {
+            return (
+              <Filter
+                description={hatredComponentName}
+                onChange={(newValue) => {
+                  setFiltersByHatredComponent({
+                    ...filtersByHatredComponent,
+                    [hatredComponentName]: newValue,
+                  });
+                }}
+                value={value}
+                key={hatredComponentName}
+              />
+            );
+          },
+        )}
       </div>
     </div>
   );

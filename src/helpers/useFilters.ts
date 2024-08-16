@@ -3,7 +3,7 @@ import type { AttacksData, Case, Clasificacion } from "../../common/json-shape";
 import { isCaseTipoId, type CaseTipoId } from "../types/caseData";
 
 export type TipoFilters = Record<CaseTipoId, boolean>;
-type HatredComponentFilters = Record<string, boolean>;
+export type HatredComponentFilters = Record<string, boolean>;
 
 type FiltersUtilities = {
   setDates: (dates: { min: number; max: number }) => void;
