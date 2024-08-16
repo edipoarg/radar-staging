@@ -49,8 +49,14 @@ function Landing() {
 
   const [popupInfo, setPopupInfo] = useState<Case | null>(null);
 
-  const { filteredData, setDates, setTipoFilters, tipoFilters } =
-    useFilters(casos);
+  const {
+    filteredData,
+    setDates,
+    setTipoFilters,
+    tipoFilters,
+    filtersByHatredComponent,
+    setFiltersByHatredComponent,
+  } = useFilters(casos);
 
   return (
     <div id={Navlinks.homeAnchor} className={styles.Landing}>
@@ -58,6 +64,8 @@ function Landing() {
         caseCount={filteredData.length}
         tipoFilters={tipoFilters}
         setTipoFilters={setTipoFilters}
+        filtersByHatredComponent={filtersByHatredComponent}
+        setFiltersByHatredComponent={setFiltersByHatredComponent}
       />
       <RadarMap
         setPopupInfo={setPopupInfo}
