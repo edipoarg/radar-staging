@@ -24,25 +24,22 @@ export default function RedRadar() {
             <span className={styles.negritaTitulo}>
               RADAR (Registro de Ataques de Derechas Argentinas Radicalizadas)
             </span>
-            es un proyecto periodístico colaborativo impulsado por el Equipo de
-            Investigación Política (EdIPo) de la Revista Crisis con apoyo del
-            Centro de Estudios Legales y Sociales (CELS) con el objetivo de
-            fortalecer la democracia y la defensa de los derechos humanos.
-            Presentamos un mapeo colaborativo de ataques protagonizados por
-            derechas radicalizadas con el fin de contribuir al diagnóstico
-            colectivo y la elaboración de estrategias de autocuidado.
+            Red federal en Argentina para el relevamiento, la investigación y la
+            elaboración de respuestas con organizaciones locales de distintas
+            provincias del país.
           </h6>
         </div>
       </section>
       <section className={styles.conecta2}>
         <h6 className={styles.textConecta2}>
-          Dentro del amplio espectro que componen las derechas llamamos
-          radicalizadas a los sectores que apelan directa o indirectamente a la
-          violencia como método de intervención política. Entendemos por ataques
-          de derecha radicalizada aquellas acciones que expresan un deseo de
-          aniquilación del otro con el objeto de silenciar, amedrentar,
-          disciplinar o eliminar identidades políticas como forma de influir en
-          la discusión pública e inhibir su participación.
+          Entendemos que esta red tiene dos aristas: la nacional y la
+          internacional. Para la primera definimos: activar newsletter (en
+          principio mensual) a contactos y convocar una reunión con las personas
+          que se sumen a la red. Hablamos también sobre armar actividades en
+          territorio (presentaciones del proyecto, conversatorios de diversas
+          temáticas que confluyen en RADAR). Para la segunda decidimos entablar
+          conversaciones con contactos internacionales (como CIPER en Chile) y
+          activar posibles colaboraciones.
         </h6>
 
         <h6 className={styles.siTeInteresa}>

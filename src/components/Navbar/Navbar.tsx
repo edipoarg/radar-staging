@@ -37,7 +37,10 @@ export default function Navbar() {
         >
           <IoMdPin size={iconsHeight} />
         </NavLink>
-        <NavLink to={Navlinks.quienesSomos}>
+        <NavLink
+          to={Navlinks.quienesSomos}
+          className={getSelectedClassname(isSelected(Navlinks.quienesSomos))}
+        >
           <TiInfoLarge size={iconsHeight} />
         </NavLink>
         <NavLink
@@ -46,7 +49,10 @@ export default function Navbar() {
         >
           <LuFileSearch size={iconsHeight} />
         </NavLink>
-        <NavLink to={Navlinks.novedades}>
+        <NavLink
+          to={Navlinks.novedades}
+          className={getSelectedClassname(isSelected(Navlinks.novedades))}
+        >
           <HiOutlineBellAlert size={iconsHeight} />
         </NavLink>
         <NavLink

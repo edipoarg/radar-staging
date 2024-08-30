@@ -13,6 +13,7 @@ import Presentacion from "./components/QuienesSomos/Presentacion/Presentacion";
 import Definiciones from "./components/QuienesSomos/Definiciones/Definiciones";
 import PatronDeCasos from "./components/QuienesSomos/PatronDeCasos/PatronDeCasos";
 import Metodologia from "./components/QuienesSomos/Metodologia/Metodologia";
+import Novedades from "./components/Novedades/Novedades";
 
 const loader = async () => ({
   urls: await fetchUrlsData({
@@ -35,6 +36,7 @@ const router = createHashRouter([
       { path: Navlinks.patronDeCasos, element: <PatronDeCasos /> },
       { path: Navlinks.metodologia, element: <Metodologia /> },
       { path: Navlinks.investigaciones, element: <Investigaciones /> },
+      { path: Navlinks.novedades, element: <Novedades /> },
       { path: Navlinks.redRadar, element: <RedRadar /> },
     ],
   },
