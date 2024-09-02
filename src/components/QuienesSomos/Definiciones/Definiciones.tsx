@@ -1,6 +1,10 @@
-/* eslint-disable css-modules/no-unused-class */
 import styles from "../QuienesSomos.module.css";
 import definiciones from "../../../../public/data/definiciones.json";
+
+type Definicion = {
+  termino: string;
+  definicion: string;
+};
 
 export default function Definiciones() {
   return (
@@ -16,12 +20,14 @@ export default function Definiciones() {
         </h4>
       </div>
       <div className={styles.content}>
-        {definiciones.map((item, index) => (
-          <div key={index}>
-            <h3 className={styles.term}>{item.termino}:</h3>
-            <h5 className={styles.definition}>{item.definicion}</h5>
-          </div>
-        ))}
+        <ul className={styles.list}>
+          {definiciones.map((item: Definicion, index: number) => (
+            <li key={index} className={styles.listItem}>
+              <h3 className={styles.term}>{item.termino}:</h3>
+              <h5 className={styles.definition}>{item.definicion}</h5>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
