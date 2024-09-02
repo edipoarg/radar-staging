@@ -1,19 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
-/* eslint-disable css-modules/no-unused-class */
-import { useEffect, useState } from "react";
 import styles from "../QuienesSomos.module.css";
-import metodologiaData from "../../../../public/data/metodologia.json"; // Ajusta la ruta si es necesario
+import metodologiaData from "../../../../public/data/metodologia.json";
 
 export default function Metodologia() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    // Simula la carga de datos desde un archivo JSON
-    setData(metodologiaData);
-  }, []);
-
-  if (!data) return <div>Cargando...</div>;
-
+  const data = metodologiaData;
   return (
     <section className={styles.section}>
       <div className={styles.header}>
