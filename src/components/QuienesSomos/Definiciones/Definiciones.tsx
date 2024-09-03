@@ -1,16 +1,11 @@
 import styles from "../QuienesSomos.module.css";
-import definiciones from "../../../../public/data/definiciones.json";
-
-type Definicion = {
-  termino: string;
-  definicion: string;
-};
+import { definiciones } from "./definiciones";
 
 export default function Definiciones() {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Definiciones</h2>
+        <h2 className={styles.title}>{definiciones.title}</h2>
         <h4 className={styles.description}>
           En este punto explicamos lo que entendemos por algunos términos
           repetitivos que usamos cuando investigamos. Son definiciones propias
@@ -20,11 +15,17 @@ export default function Definiciones() {
         </h4>
       </div>
       <div className={styles.content}>
-        <ul className={styles.list}>
-          {definiciones.map((item: Definicion, index: number) => (
-            <li key={index} className={styles.listItem}>
-              <h3 className={styles.term}>{item.termino}:</h3>
-              <h5 className={styles.definition}>{item.definicion}</h5>
+        <ul>
+          {Object.entries(definiciones.terms).map(([termName, term]) => (
+            <li key={termName}>
+              <h3 className={styles.term}>{termName}:</h3>
+              {term.definitions.map((definition) =>
+                definition.paragraphs.map((paragraph) => (
+                  <h5 key={paragraph} className={styles.definition}>
+                    {paragraph}
+                  </h5>
+                )),
+              )}
             </li>
           ))}
         </ul>

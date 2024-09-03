@@ -1,40 +1,35 @@
 import styles from "../QuienesSomos.module.css";
-import metodologiaData from "../../../../public/data/metodologia.json";
+import { metodologia } from "./metodologia";
 
 export default function Metodologia() {
-  const data = metodologiaData;
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{data.title}</h2>
+        <h2 className={styles.title}>{metodologia.title}</h2>
       </div>
 
       <div className={styles.content}>
-        {data.sections.map((section, index) => (
-          <div key={index}>
-            <h3 className={styles.term}>{section.term}</h3>
-            {section.definition.map((item, idx) => {
-              if (typeof item === "string") {
-                return (
-                  <h5 key={idx} className={styles.definition}>
-                    {item}
-                  </h5>
-                );
-              } else if (item.list) {
-                return (
-                  <ul key={idx}>
-                    {item.list.map((listItem, listIndex) => (
-                      <li key={listIndex} className={styles.definition}>
-                        {listItem}
-                      </li>
+        {Object.entries(metodologia.terms).map(([termName, term]) => {
+          return (
+            <section key={termName}>
+              <h3 className={styles.term}>{termName}</h3>
+              <ul>
+                {term.definitions.map((definition, index) => (
+                  <li key={index}>
+                    {definition.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
                     ))}
-                  </ul>
-                );
-              }
-              return null;
-            })}
-          </div>
-        ))}
+                  </li>
+                ))}
+              </ul>
+              <ul>
+                {term.members.map((member) => (
+                  <li key={member}>{member}</li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
       </div>
     </section>
   );

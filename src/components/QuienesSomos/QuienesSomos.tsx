@@ -1,4 +1,3 @@
-/* eslint-disable css-modules/no-unused-class */
 import { NavLink } from "react-router-dom";
 import styles from "./QuienesSomos.module.css";
 import Navlinks from "../../routes/index";
