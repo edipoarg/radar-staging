@@ -12,7 +12,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'tools'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module', project: "./tsconfig.json" },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh', 'css-modules'],

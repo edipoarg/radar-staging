@@ -10,7 +10,8 @@
     "build": "node services/fetchAndSaveColorByType.js > services/data/colors-by-type.tsv && node services/fetchAndSaveSheet.js > services/data/sheet.tsv && node services/google-sheets.cjs > public/data/ataques.json && tsc --noEmit && vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "test": "vitest"
+    "test": "vitest",
+    "preinstall": "npx only-allow yarn"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
