@@ -13,6 +13,7 @@ import ReactPopup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { Drawer } from "../Drawer/Drawer";
 import { useTogglable } from "../../helpers/useTogglable";
+import { DateSelectionInputs } from "../DateSelectionInputs/DateSelectionInputs";
 
 type LoaderData = {
   urls: {
@@ -45,8 +46,13 @@ function Landing() {
 
   const [selectedAttack, setSelectedAttack] = useState<Attack | null>(null);
 
-  const { filteredData, setDates, setTipoFilters, tipoFilters } =
-    useFilters(ataques);
+  const {
+    filteredData,
+    setDates,
+    minAndMaxSelectedDates,
+    setTipoFilters,
+    tipoFilters,
+  } = useFilters(ataques);
 
   const serializableFilteredAttacks = filteredData.map(makeAttackSerializable);
   const [drawerIsOpen, toggleDrawerIsOpen] = useTogglable();
@@ -77,12 +83,19 @@ function Landing() {
               />
               <MonthsSlider
                 boundaryDates={boundaryDates}
+                minAndMaxSelectedDates={minAndMaxSelectedDates}
                 setFilterDates={setDates}
               />
             </div>
           )
         }
-        hiddenContent={undefined}
+        hiddenContent={
+          <DateSelectionInputs
+            className={styles.dateSelectionInputs ?? ""}
+            minAndMaxSelectedDates={minAndMaxSelectedDates}
+            setDates={setDates}
+          />
+        }
         toggleDrawerIsOpen={toggleDrawerIsOpen}
         numberOfCases={filteredData.length}
         onDownloadDataRequest={() => {

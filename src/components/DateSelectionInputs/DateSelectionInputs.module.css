@@ -1,0 +1,18 @@
+.DateSelectionInputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.dateSelectorButton {
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 30px;
+    font-family: "Ronnia Condensed Regular";
+    border: none;
+
+}
+
+.dayPicker {
+    width: fit-content;
+}

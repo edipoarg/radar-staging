@@ -6,6 +6,7 @@ type HatredComponentFilters = Record<string, boolean>;
 
 type FiltersUtilities = {
   setDates: (dates: { min: number; max: number }) => void;
+  minAndMaxSelectedDates: { min: number; max: number };
   setTipoFilters: (setter: (oldFilters: TipoFilters) => TipoFilters) => void;
   tipoFilters: TipoFilters;
   filteredData: Attack[];
@@ -120,6 +121,7 @@ export const useFilters = ({
 
   return {
     setDates,
+    minAndMaxSelectedDates: dates,
     setTipoFilters,
     filteredData,
     tipoFilters,
