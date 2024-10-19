@@ -22,3 +22,8 @@
   background: linear-gradient(var(--radar-white) 4%, var(--radar-sky-blue) 43%);
   color: var(--radar-black);
 }
+
+.dateSelectionInputs {
+  height: 100px;
+  width: 100%;
+}
