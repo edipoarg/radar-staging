@@ -102,6 +102,7 @@ export default function MonthsSlider({
             <div
               className={[styles.knob, classNameByWhichKnobItIs].join(" ")}
               {...props}
+              key={props.key}
             >
               <div className={styles.dateTooltip}>
                 {valueLabelFormat(value)}
