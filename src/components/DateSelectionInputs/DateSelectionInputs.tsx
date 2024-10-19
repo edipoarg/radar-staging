@@ -36,13 +36,16 @@ export const DateSelectionInputs = ({
     });
   };
 
+  const minDateText = min.toLocaleDateString("es-AR");
+  const maxDateText = max.toLocaleDateString("es-AR");
+
   return (
     <section className={`${styles.DateSelectionInputs} ${className}`}>
       <ReactPopup
         modal
         trigger={
-          <button type="button" className={styles.startDate}>
-            Fecha inicio
+          <button type="button" className={styles.dateSelectorButton}>
+            {minDateText}
           </button>
         }
         position="center center"
@@ -54,14 +57,14 @@ export const DateSelectionInputs = ({
           mode="single"
           selected={min}
           onSelect={setSelectedMinDate}
-          footer={`Fecha de inicio seleccionada: ${min.toLocaleDateString("es-AR")}`}
+          footer={`Fecha de inicio seleccionada: ${minDateText}`}
         />
       </ReactPopup>
       <ReactPopup
         modal
         trigger={
-          <button type="button" className={styles.endDate}>
-            Fecha fin
+          <button type="button" className={styles.dateSelectorButton}>
+            {maxDateText}
           </button>
         }
         position="center center"
@@ -73,7 +76,7 @@ export const DateSelectionInputs = ({
           mode="single"
           selected={max}
           onSelect={setSelectedMaxDate}
-          footer={`Fecha de fin seleccionada: ${max.toLocaleDateString("es-AR")}`}
+          footer={`Fecha de fin seleccionada: ${maxDateText}`}
         />
       </ReactPopup>
     </section>
