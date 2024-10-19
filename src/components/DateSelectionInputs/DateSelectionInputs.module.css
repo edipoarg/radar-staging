@@ -1,0 +1,12 @@
+.DateSelectionInputs {
+    border: 1px solid red;
+}
+
+
+.startDate {}
+
+.endDate {}
+
+.dayPicker {
+    width: fit-content;
+}

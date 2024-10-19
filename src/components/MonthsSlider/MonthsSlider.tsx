@@ -1,18 +1,21 @@
-import { useState, useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Range } from "react-range";
 import styles from "./MonthsSlider.module.css";
 import type { BoundaryDates } from "../../types/dates";
 import { monthsDiff, sliderKnobToSliderKnobLabel } from "./dateHelpers";
 import { SliderTrackHOC } from "./SliderTrack/SliderTrack";
+import type { MinAndMaxDates } from "../../helpers/minAndMaxDates";
 
 interface Props {
   className?: string;
   boundaryDates: BoundaryDates;
+  minAndMaxSelectedDates: MinAndMaxDates;
   setFilterDates: (dates: { min: number; max: number }) => void;
 }
 
 const useSliderBehavior = (
   boundaryDates: BoundaryDates,
+  minAndMaxSelectedDates: MinAndMaxDates,
   setFilterDates: (dates: { min: number; max: number }) => void,
 ) => {
   const totalMonths = useMemo(
@@ -24,9 +27,15 @@ const useSliderBehavior = (
    * It starts with [0, {however many months there are within the boundary dates, minus one}]
    * Then, as you use the slider, the starting and ending indices change
    */
-  const [monthRange, setMonthRange] = useState<[number, number]>([
-    0,
-    totalMonths,
+  const monthRange = useMemo<[number, number]>(() => {
+    return [
+      monthsDiff(boundaryDates.min, new Date(minAndMaxSelectedDates.min)),
+      monthsDiff(boundaryDates.min, new Date(minAndMaxSelectedDates.max)),
+    ];
+  }, [
+    minAndMaxSelectedDates.min,
+    minAndMaxSelectedDates.max,
+    boundaryDates.min,
   ]);
 
   const valueLabelFormat = useCallback(
@@ -58,7 +67,6 @@ const useSliderBehavior = (
       max.setMonth(max.getMonth() - (totalMonths - (range[1] + 1)));
       min.setMonth(min.getMonth() + range[0] - 1);
 
-      setMonthRange(range);
       setFilterDates({
         min: min.getTime(),
         max: max.getTime(),
@@ -73,10 +81,11 @@ const useSliderBehavior = (
 export default function MonthsSlider({
   className,
   boundaryDates,
+  minAndMaxSelectedDates,
   setFilterDates,
 }: Props) {
   const { monthRange, totalMonths, handleSliderValueChange, valueLabelFormat } =
-    useSliderBehavior(boundaryDates, setFilterDates);
+    useSliderBehavior(boundaryDates, minAndMaxSelectedDates, setFilterDates);
 
   return (
     <div className={`${styles.monthsSliderContainer} ${className ?? ""}`}>
