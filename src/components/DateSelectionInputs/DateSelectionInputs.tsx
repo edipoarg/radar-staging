@@ -13,14 +13,20 @@ type Props = {
   className: string;
   setDates: (newDates: MinAndMaxDates) => void;
   minAndMaxSelectedDates: MinAndMaxDates;
+  minAndMaxSelectableDates: MinAndMaxDates;
 };
 
 export const DateSelectionInputs = ({
   className,
   minAndMaxSelectedDates,
   setDates,
+  minAndMaxSelectableDates,
 }: Props) => {
   const { min, max } = getMinAndMaxJsDatesFromDates(minAndMaxSelectedDates);
+  const minAndMaxSelectableDatesAsJsDates = getMinAndMaxJsDatesFromDates({
+    min: Math.min(minAndMaxSelectableDates.min, minAndMaxSelectedDates.min),
+    max: Math.max(minAndMaxSelectableDates.max, minAndMaxSelectedDates.max),
+  });
 
   const setSelectedMaxDate = (newMaxDate: Date): void => {
     setDates({
@@ -55,6 +61,11 @@ export const DateSelectionInputs = ({
           required
           className={styles.dayPicker}
           mode="single"
+          disabled={{
+            before: minAndMaxSelectableDatesAsJsDates.min,
+            after: minAndMaxSelectableDatesAsJsDates.max,
+          }}
+          defaultMonth={min}
           selected={min}
           onSelect={setSelectedMinDate}
           footer={`Fecha de inicio seleccionada: ${minDateText}`}
@@ -74,6 +85,11 @@ export const DateSelectionInputs = ({
           required
           className={styles.dayPicker}
           mode="single"
+          disabled={{
+            before: minAndMaxSelectableDatesAsJsDates.min,
+            after: minAndMaxSelectableDatesAsJsDates.max,
+          }}
+          defaultMonth={max}
           selected={max}
           onSelect={setSelectedMaxDate}
           footer={`Fecha de fin seleccionada: ${maxDateText}`}

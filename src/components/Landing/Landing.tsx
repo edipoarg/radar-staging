@@ -94,6 +94,10 @@ function Landing() {
             className={styles.dateSelectionInputs ?? ""}
             minAndMaxSelectedDates={minAndMaxSelectedDates}
             setDates={setDates}
+            minAndMaxSelectableDates={{
+              max: ataques.max,
+              min: ataques.min,
+            }}
           />
         }
         toggleDrawerIsOpen={toggleDrawerIsOpen}
