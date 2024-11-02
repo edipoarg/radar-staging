@@ -52,24 +52,28 @@ const useSliderBehavior = (
 
       const min = new Date(boundaryDates.min);
       const max = new Date(boundaryDates.max);
+      const selectedMin = new Date(boundaryDates.min);
+      const selectedMax = new Date(boundaryDates.max);
 
       // Make max the last day of its month
-      max.setMonth(max.getMonth() + 1);
-      max.setDate(-1);
-      max.setHours(23);
-      max.setMinutes(59);
+      selectedMax.setMonth(max.getMonth() - (totalMonths - (range[1] + 1)));
+      selectedMax.setMonth(selectedMax.getMonth() + 1);
+      selectedMax.setDate(-1);
+      selectedMax.setHours(23);
+      selectedMax.setMinutes(59);
 
-      // Make min the first day of its month
-      min.setDate(1);
-      min.setHours(0);
-      min.setMinutes(0);
+      // Make the selected min the first day of its month, unless the selected month contains the boundary min date in which case leave it as-is
+      if (range[0] !== 0) {
+        selectedMin.setDate(1);
+      }
+      selectedMin.setHours(0);
+      selectedMin.setMinutes(0);
 
-      max.setMonth(max.getMonth() - (totalMonths - (range[1] + 1)));
-      min.setMonth(min.getMonth() + range[0] - 1);
+      selectedMin.setMonth(min.getMonth() + range[0]);
 
       setFilterDates({
-        min: min.getTime(),
-        max: max.getTime(),
+        min: selectedMin.getTime(),
+        max: selectedMax.getTime(),
       });
     },
     [boundaryDates.min, boundaryDates.max, totalMonths, setFilterDates],
