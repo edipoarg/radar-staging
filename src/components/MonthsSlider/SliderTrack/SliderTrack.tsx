@@ -15,8 +15,8 @@ export const SliderTrackHOC = ({
    * and the general documentation of the library: https://github.com/tajo/react-range
    */
   const knobsContainerWidthPercentage =
-    ((monthRange[1] - monthRange[0]) * 100) / totalMonths;
-  const knobsContainerLeftValue = (monthRange[0] * 100) / totalMonths;
+    ((monthRange[1] - monthRange[0]) * 100) / (totalMonths - 1);
+  const knobsContainerLeftValue = (monthRange[0] * 100) / (totalMonths - 1);
   const SliderTrack = ({ props, children }: IRenderTrackParams) => (
     <div
       className={styles.trackOuter}

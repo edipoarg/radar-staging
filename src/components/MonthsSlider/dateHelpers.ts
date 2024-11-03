@@ -1,15 +1,18 @@
-export const date2MonthYear = (d: Date) =>
+export const dateToMonthYear = (d: Date) =>
   d.toLocaleDateString("es-AR", {
     month: "short",
     year: "numeric",
   });
 
 /** Returns the amount of months that happened between the months corresponding to two given dates */
-export const monthsDiff = (b: Date, a: Date) => {
+export const monthsDiff = (a: Date, b: Date) => {
   const yearsDiff = a.getFullYear() - b.getFullYear();
   const monthDiff = a.getMonth() - b.getMonth();
-  return yearsDiff * 12 + monthDiff;
+  return Math.abs(yearsDiff * 12 + monthDiff);
 };
+
+/** Gets total of the months that happen between two dates. e.g. the months between Jan and Feb are 2 */
+export const getTotalMonths = (a: Date, b: Date) => monthsDiff(a, b) + 1;
 
 export const sliderKnobToSliderKnobLabel =
   (maxDate: Date) => (totalNumberOfMonths: number) => (knobValue: number) => {
@@ -27,5 +30,5 @@ export const sliderKnobToSliderKnobLabel =
     // We detected this on July the 30th. This is because you can't get, say, February the 31st.
     newDate.setDate(1);
     newDate.setMonth(newDate.getMonth() - monthOffset);
-    return date2MonthYear(newDate);
+    return dateToMonthYear(newDate);
   };

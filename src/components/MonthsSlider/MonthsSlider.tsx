@@ -2,7 +2,11 @@ import { useCallback, useMemo } from "react";
 import { Range } from "react-range";
 import styles from "./MonthsSlider.module.css";
 import type { BoundaryDates } from "../../types/dates";
-import { monthsDiff, sliderKnobToSliderKnobLabel } from "./dateHelpers";
+import {
+  getTotalMonths,
+  monthsDiff,
+  sliderKnobToSliderKnobLabel,
+} from "./dateHelpers";
 import { SliderTrackHOC } from "./SliderTrack/SliderTrack";
 import type { MinAndMaxDates } from "../../helpers/minAndMaxDates";
 import { lastDayOfMonth } from "date-fns";
@@ -19,11 +23,8 @@ const useSliderBehavior = (
   minAndMaxSelectedDates: MinAndMaxDates,
   setFilterDates: (dates: { min: number; max: number }) => void,
 ) => {
-  const totalMonths = useMemo(
-    // Plus one because we don't want the difference but the totality. e.g. Jan and Feb are 2, not 1
-    () => monthsDiff(boundaryDates.min, boundaryDates.max) + 1,
-    [boundaryDates.min, boundaryDates.max],
-  );
+  const totalMonths = getTotalMonths(boundaryDates.min, boundaryDates.max);
+
   /** monthRange represents the indices of the months that are currently within the selected range.
    * It starts with [0, {however many months there are within the boundary dates, minus one}]
    * Then, as you use the slider, the starting and ending indices change
@@ -98,7 +99,7 @@ export default function MonthsSlider({
         values={monthRange}
         step={1}
         min={0}
-        max={totalMonths}
+        max={totalMonths - 1 /* Cause it's zero-indexed! */}
         onChange={handleSliderValueChange}
         renderThumb={({ props, value, index }) => {
           const classNameByWhichKnobItIs =

@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { sliderKnobToSliderKnobLabel } from "./dateHelpers";
+import {
+  getTotalMonths,
+  monthsDiff,
+  sliderKnobToSliderKnobLabel,
+} from "./dateHelpers";
 
 describe("sliderKnobToSliderKnobLabel", () => {
   describe("when given February the 20th as a date", () => {
@@ -32,6 +36,26 @@ describe("sliderKnobToSliderKnobLabel", () => {
           expect(label).toEqual("feb 2024");
         });
       });
+    });
+  });
+});
+
+describe("monthsdiff", () => {
+  describe("Given a date in Jan 2024 and a date in May 2024", () => {
+    const dateInJan2024 = new Date("2024-01-20");
+    const dateInMay2024 = new Date("2024-05-20");
+    it("returns 4", () => {
+      expect(monthsDiff(dateInJan2024, dateInMay2024)).toBe(4);
+    });
+  });
+});
+
+describe("getTotalMonths", () => {
+  describe("Given a date in Jan 2024 and a date in May 2024", () => {
+    const dateInJan2024 = new Date("2024-01-20");
+    const dateInMay2024 = new Date("2024-05-20");
+    it("returns 5", () => {
+      expect(getTotalMonths(dateInJan2024, dateInMay2024)).toBe(5);
     });
   });
 });
