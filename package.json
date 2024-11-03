@@ -17,6 +17,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@types/react-lines-ellipsis": "^0.15.6",
+    "date-fns": "^4.1.0",
     "json-to-csv-export": "^3.0.1",
     "maplibre-gl": "^3.6.2",
     "react": "^18.2.0",

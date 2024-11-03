@@ -5,6 +5,7 @@ import type { BoundaryDates } from "../../types/dates";
 import { monthsDiff, sliderKnobToSliderKnobLabel } from "./dateHelpers";
 import { SliderTrackHOC } from "./SliderTrack/SliderTrack";
 import type { MinAndMaxDates } from "../../helpers/minAndMaxDates";
+import { lastDayOfMonth } from "date-fns";
 
 interface Props {
   className?: string;
@@ -52,24 +53,24 @@ const useSliderBehavior = (
 
       const min = new Date(boundaryDates.min);
       const max = new Date(boundaryDates.max);
-      const selectedMin = new Date(boundaryDates.min);
-      const selectedMax = new Date(boundaryDates.max);
 
-      // Make max the last day of its month
+      let selectedMax = new Date(boundaryDates.max);
+      // Update according to user input
       selectedMax.setMonth(max.getMonth() - (totalMonths - (range[1] + 1)));
-      selectedMax.setMonth(selectedMax.getMonth() + 1);
-      selectedMax.setDate(-1);
+      // Make max the last day of its month
+      selectedMax = lastDayOfMonth(selectedMax);
       selectedMax.setHours(23);
       selectedMax.setMinutes(59);
 
+      const selectedMin = new Date(boundaryDates.min);
+      // Update according to user input
+      selectedMin.setMonth(min.getMonth() + range[0]);
       // Make the selected min the first day of its month, unless the selected month contains the boundary min date in which case leave it as-is
       if (range[0] !== 0) {
         selectedMin.setDate(1);
       }
       selectedMin.setHours(0);
       selectedMin.setMinutes(0);
-
-      selectedMin.setMonth(min.getMonth() + range[0]);
 
       setFilterDates({
         min: selectedMin.getTime(),
