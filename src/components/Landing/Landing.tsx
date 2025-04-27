@@ -38,6 +38,8 @@ const onDownloadDataRequest =
     jsonToCsvExport({ data: serializableFilteredAttacks });
   };
 
+const currentVersion = import.meta.env.VITE_RADAR_VERSION;
+
 function Landing() {
   const { urls } = useLoaderData() as LoaderData;
   const { provincias, departamentosBsAs, rutas, ataques } = urls;
@@ -161,6 +163,19 @@ function Landing() {
           serializableFilteredAttacks,
         )}
       />
+
+      <a // Desktop-only
+        className={styles.edipoLogo}
+        href="https://investigacionpolitica.com"
+        target="blank"
+      >
+        [&nbsp;&nbsp;] EdIPo
+      </a>
+      <span // Desktop-only
+        className={styles.versionNumber}
+      >
+        v {currentVersion}
+      </span>
     </article>
   );
 }
