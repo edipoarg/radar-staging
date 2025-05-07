@@ -42,8 +42,9 @@
 }
 
 .pagesNavLinks a.selected {
-  color: #145bff;
-  fill: #145bff;
+  color: #297fef;
+  text-shadow: 0 0 10px #297fef, 0 0 30px #297fef, 0 0 50px #297fef;
+  filter: drop-shadow(0 0 20px #297fef);
 }
 
 .pagesNavLinks {

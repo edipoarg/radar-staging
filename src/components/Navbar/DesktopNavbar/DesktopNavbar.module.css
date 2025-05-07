@@ -41,8 +41,9 @@
 }
 
 .heading a.selected svg {
-  color: #739dff;
-}
+  color: #297fef;
+  text-shadow: 0 0 10px #297fef, 0 0 30px #297fef, 0 0 50px #297fef;
+  filter: drop-shadow(0 0 20px #297fef);}
 
 /* Hide on mobile */
 @media (max-width: 1200px) {
