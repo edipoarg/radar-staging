@@ -4,35 +4,35 @@
 
 .conecta {
   background: linear-gradient(20deg, #0a0d15, #292f36);
-  padding: 0 1rem 5rem 1rem;
-  padding-top: 3rem;
-}
-
-.content {
-  border: solid 1px #297fef;
+  padding: 7rem 4rem 5rem 4rem;
+  min-height: 100vh;
 }
 
 .conectaTitulo {
-  color: #ffffff;
-  font-size: 1.8rem;
+  width: 200px;
+  height: auto;
+  fill: #297fef;
+  filter: drop-shadow(0 0 40px #297fef77);
+}
+
+.conectaSubtitulo {
   color: #297fef;
-  text-shadow: 0 0 40px #297fef77;
+  font-size: 1.5rem;
+  text-align: left;
 }
 
 .conectaTextRadar {
-  padding: 0 5vw;
   padding-top: 5vh;
   color: white;
   font-size: 1rem;
   text-align: justify;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .siTeInteresa {
   margin-top: 1.5rem;
   padding: 2vh 2vw;
   color: #297fef;
-  text-transform: uppercase;
   text-align: center;
   font-size: 1.5rem;
   border-radius: 60px;
@@ -44,11 +44,11 @@
 }
 
 .radarDecoImg {
-  opacity: 0.1;
-  position: absolute;
-  top: 10vh;
-  right: 20vw;
-  height: 80vh;
+  opacity: 0.3;
+  position: fixed;
+  top: -40vh;
+  right: 0vw;
+  height: 100vh;
   filter: drop-shadow(0 0 30px #ffffff);
 }
 
@@ -65,28 +65,27 @@
 
 @keyframes dash {
   0% {
-    stroke-dasharray: 0, 565;
+    stroke-dasharray: 40, 150;
   }
 
   25% {
-    stroke-dasharray: 140, 425;
+    stroke-dasharray: 60, 325;
   }
 
   50% {
-    stroke-dasharray: 280, 285;
+    stroke-dasharray: 80, 285;
   }
 
   75% {
-    stroke-dasharray: 420, 145;
+    stroke-dasharray: 120, 145;
   }
 
   100% {
-    stroke-dasharray: 565, 0;
+    stroke-dasharray: 3, 10;
   }
 }
 
-/*== tablet==*/
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .conecta {
     width: 100vw;
     padding: 20vh 15vw;
@@ -94,35 +93,16 @@
     height: 100vh;
   }
 
-  .conectaTitulo {
-    color: #ffffff;
-    font-size: 1.1rem;
-    padding: 0vh 5vw;
-    text-align: right;
-  }
-
   .conectaSubtitulo {
-    color: #297fef;
     font-size: 1.8rem;
-    padding: 0vh 5vw;
+    padding: 0vh 4vw;
     text-align: left;
     max-width: 40vw;
   }
 
-  .conectaTextRadar {
-    padding: 0vh 4vw;
-    padding-top: 5vh;
-    color: white;
-    font-size: 1.2rem;
-    text-align: justify;
-  }
-}
-
-@media (min-width: 1200px) {
   .conectaTitulo {
-    color: #297fef;
-    font-size: 6rem;
-    padding: 0vh 5vw;
+    width: 28vw;
+    padding: 0vh 4vw;
     text-align: left;
   }
 
@@ -133,5 +113,12 @@
     font-size: 1.2rem;
     text-align: justify;
     padding-right: 15vw;
+  }
+
+  .radarDecoImg {
+    top: -15vh;
+    right: 10vw;
+    height: 100vh;
+    filter: drop-shadow(0 0 30px #ffffff);
   }
 }
