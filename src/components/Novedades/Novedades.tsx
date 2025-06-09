@@ -12,26 +12,27 @@ export default function Novedades() {
       </div>
 
       <div className={styles.content}>
-        {Object.entries(novedades.terms).map(([termName, term]) => {
+        {Object.entries(novedades.terms).map(([termName]) => {
           return (
             <section key={termName} className={styles.term}>
               <h3>{termName}</h3>
-              <section className={styles.solidContainer}>
-                <LuMailPlus className={styles.mailIcon}/>
-                <ul className={styles.blueContainer}>
-                  {term.definitions.map((novedad, index) => (
-                    <li key={index} className={styles.description}>
-                      {novedad.paragraphs.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </li>
-                  ))}
-                </ul>
-              </section>
+
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSemLdPC4Fnm1NY8ScNG8noC_pvTIV1bvaVq4sw9dTrjHPT84Q/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.newsletterLink}
+              >
+                <section className={styles.solidButton}>
+                  <LuMailPlus className={styles.mailIcon} />
+                  <span className={styles.ingresarText}>Sumate</span>
+                </section>
+              </a>
             </section>
           );
         })}
       </div>
+
       <div className={styles.deco}></div>
     </section>
   );
